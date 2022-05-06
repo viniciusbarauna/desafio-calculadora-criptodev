@@ -4,17 +4,17 @@ const numbotoes = document.querySelectorAll("[data-numero]");
 const operacaobotoes = document.querySelectorAll("[data-operador]");
 const igualbot = document.querySelector("[data-igual]");
 
-const operacaoAnteriorTextElement = document.querySelector(
+const operacaoAnteriorET = document.querySelector(
   "[data-operacao-anterior]"
 );
-const operacaoAtualTextElement = document.querySelector(
+const operacaoAtualET = document.querySelector(
   "[data-operacao-atual]"
 );
 
 class Calculator {
-  constructor(operacaoAnteriorTextElement, operacaoAtualTextElement) {
-    this.operacaoAnteriorTextElement = operacaoAnteriorTextElement;
-    this.operacaoAtualTextElement = operacaoAtualTextElement;
+  constructor(operacaoAnteriorET, operacaoAtualET) {
+    this.operacaoAnteriorET = operacaoAnteriorET;
+    this.operacaoAtualET = operacaoAtualET;
     this.apagar();
   }
 
@@ -98,17 +98,17 @@ class Calculator {
   }
 
   atualizarDisplay() {
-    this.operacaoAnteriorTextElement.innerText = `${this.formatarNum(
+    this.operacaoAnteriorET.innerText = `${this.formatarNum(
       this.operacaoAnterior
     )} ${this.operacao || ""}`;
-    this.operacaoAtualTextElement.innerText = this.formatarNum(
+    this.operacaoAtualET.innerText = this.formatarNum(
       this.operacaoAtual
     );
   }
 }
 const calculator = new Calculator(
-  operacaoAnteriorTextElement,
-  operacaoAtualTextElement
+  operacaoAnteriorET,
+  operacaoAtualET
 );
 for (const Numerobot of numbotoes) {
   Numerobot.addEventListener("click", () => {
@@ -129,7 +129,7 @@ limparbot.addEventListener("click", () => {
 igualbot.addEventListener("click", () => {
   calculator.calcular();
   calculator.atualizarDisplay();
-  alert (JSON.stringify ("Resultado: " + operacaoAtualTextElement.innerHTML))
+  alert (JSON.stringify ("Resultado: " + operacaoAtualET.innerHTML))
 });
 apagarbot.addEventListener("click", () => {
   calculator.limpar();
